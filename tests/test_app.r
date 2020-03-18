@@ -29,3 +29,30 @@ test_that("move_short_to_fullname: shortname is converted or NULL", {
   expect_identical(move_short_to_fullname("il"), "Imitate & adjust marketing left")
   expect_null(move_short_to_fullname("NEIN"))
 })
+
+# test create_state(params) ??mocking??
+
+# test create_producers(params)
+test_that("create_producers: returns tibble with correct columns", {
+  params <- list(producer_names=c("You", "Computer"), start_money=100,
+                 start_xcor=c(3, 8), start_ycor=c(8,3))
+
+  expect_true(is_tibble(create_producers(params)))
+  expect_true(all("name" %in% colnames(create_producers(params)),
+                  "balance" %in% colnames(create_producers(params)),
+                  "xcor" %in% colnames(create_producers(params)),
+                  "ycor" %in% colnames(create_producers(params))
+                  ))
+})
+
+# test create_products(params)
+test_that("create_products", {
+  params <- list(producer_names=c("You", "Computer"),
+                 start_xcor=c(3, 8), start_ycor=c(8,3))
+
+  expect_true(is_tibble(create_products(params)))
+  expect_true(all("owner" %in% colnames(create_products(params)),
+                  "xcor" %in% colnames(create_products(params)),
+                  "ycor" %in% colnames(create_products(params))
+  ))
+})
