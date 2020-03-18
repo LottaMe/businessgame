@@ -2,9 +2,7 @@
 # Try every possible move and target combination
 # Choose the one that yields highest profit
 # The actual study used a more sophisticated AI similar to DeepMind's Alpha Zero
-plus.one <- function(num) {
-  num + 1
-}
+
 
 test_move <- function(move, state) {
     player <- state$nextplayer
